@@ -35,11 +35,17 @@ function App() {
   }, []);
 
   const handleLogout = () => {
+     if (window.confirm("Are you sure wanted to logout ?")) {
+      try {
     signOut(auth).then(() => {
       setUser(null);
       setActive("login");
       navigate("/auth");
     });
+      }catch (err) {
+        console.log(err);
+      }
+     }
   };
 
   return (
